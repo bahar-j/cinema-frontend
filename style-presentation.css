@@ -1,0 +1,72 @@
+
+html { color: white; background-color: black; }
+a { text-decoration: none; }
+header { background-color: black; }
+header a { font-size: 12px; color: white; }
+nav { background-color: black; }
+footer { background-color: #3e3e3e; }
+footer ul li { list-style: none; font-size: 13px; }
+aside ul li { list-style: none; text-align: right; }
+aside a { color: white; }
+
+header a:visited { color: white; }
+header a:hover { text-decoration:underline; }
+nav .menu a:hover { font-weight: bold; color: #ffcc00; }
+aside a:visited { color: white; }
+aside a:hover { font-weight: bold; color: #ffcc00; }
+
+#mainStage { border: hidden; }
+#colored { border-color: #ffcc00; border-width: 1.5px; }
+#lower li { font-size: 13px; text-align: left; }
+
+nav .menu { list-style: none; font-size: 19px; font-weight: bold; text-align: center; }
+nav .menu a { color: white; }
+nav .submenu { list-style: none; opacity:0; font-size:13px; } 
+nav .menu li:hover .submenu { opacity:1; }
+nav .menu li:hover .submenu li { background-color: rgba(42,42,42,0.65); }
+
+.intro li { list-style: none; font-size: 25px; }
+.intro h1 { color: #ffcc00; font-size: 70px; }
+.content { font-size: 15px; }
+.movie article ul li { list-style: none; text-align: center; }
+.infoBtn { background-color: #ea7f30; color: white; padding: 10px 15px; font-size: 13px; font-weight: bold; }
+.clue { font-size: 13px; }
+.movie_header { font-size: 17px; font-weight: bold; }
+.movie .head { font-size: 20px; font-weight: bold; }
+.movie_hint { color: #ea7f30; font-size: 15px; }
+.center { text-align: center; }
+.movieTitle { color: white; font-size: 13px; background-color: #a10000; }
+.signDsc { font-size: 14px; }
+.highlight { color: #ffcc00; font-weight: bold; }
+.mvName:hover { color: #ffcc00; }
+.day:hover { color:#ffcc00; }
+.time a:hover { color:#ffcc00; }
+.time a { color: white; }
+
+#schedule { text-align: center;  border-collapse: collapse; }
+#schedule caption { font-size: 30px; font-weight:bold; }
+#schedule td { border-bottom: 1px solid #444444; padding: 10px; }
+#schedule a { color: white; }
+#schedule a:hover { text-decoration:underline; }
+#reserveBtn {  background-color:#a10000; color: white; padding: 10px 15px; font-size: 13px; }
+#selectMovie { border-top: 1px solid #dedede; border-collapse: collapse;  text-align: center; }
+#selectMovie td { border-bottom: 1px solid #dedede; padding: 5px; }
+#rsTable caption { font-size: 40px; font-weight: bold; padding: 30px; }
+#rsTable { border-collapse: collapse; }
+#rsTable td, #rsTable th { border: 1px solid #dedede; }
+#seatTable { float: left; border-collapse: collapse; table-layout: fixed; }
+#seatTable td, #seatTable th { border: 1px solid #dedede; }
+#rowTable { float: left; border-collapse: collapse; table-layout: fixed; }
+#rowTable td, #rowTable th { border: 1px solid #dedede; }
+#checkTable { border-collapse: collapse; }
+#checkTable td, #checkTable th { border: 1px solid #dedede; }
+#pick { font-size: 40px; margin-left: 120px; margin-top: 90px; margin-bottom: 30px; }
+#payBtn {  background-color:#a10000; color: white; padding: 10px 15px; font-size: 18px; }
+#mv_detail { list-style: none; font-size: 17px; line-height: 50px; }
+#done { font-size: 35px; }
+#deleteBtn {  background-color:#a10000; color: white; padding: 10px 15px; font-size: 18px; }
+.statusBtn:visited { color:white; }
+.statusBtn span {background-color:#a10000; color: white; padding: 10px 15px; font-size: 18px; margin-right: 10px; }
+#screen { border: 1px solid #dedede; padding: 10px 50px; font-size: 18px; margin-top: 50px; margin-left: 150px;}
+#colorbox1 { float:left; width: 30px; height: 30px; background-color: #d37122; margin-right: 10px; }
+#colorbox2 { float:left; width: 30px; height: 30px; background-color: #a10000; margin-top: 10px; margin-right: 10px; }

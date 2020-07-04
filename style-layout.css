@@ -1,0 +1,58 @@
+
+header { position: fixed; left: 0px; top: 0px; z-index: 2; }
+header a { margin-left: 10px; margin-right: 10px; line-height: 40px; }
+nav { position: fixed; left: 0px; top: 40px; z-index: 2; }
+footer { position: absolute; left: 0px; top: 1130px; }
+footer ul li { float: left; margin-left: 50px; line-height: 20px; }
+aside { margin-left: 200px; margin-top: 50px; }
+aside ul li { line-height: 50px; margin-left: -30px; }
+form { line-height: 40px; }
+
+header .right { margin-right: 100px; }
+nav .menu li { float: left; margin-top: -20px; margin-left: 45px; }
+nav .menu a { display: block; padding: 30px 20px; }
+nav .submenu { padding-left: 1px; padding-right: 30px; }
+nav .submenu li { float: none; margin-top: 4px; margin-bottom: -4px; }
+
+.left { float: left; }
+.right { float: right; }
+
+.intro li { float: left; }
+.intro h1 { margin-top: -20px; padding-right: 10px; }
+.content { margin-left: 160px; margin-top: 10px; margin-bottom: 50px; line-height: 30px; }
+.movie article { margin-right: 170px; margin-top: 50px; }
+.clue { margin-top: 360px; line-height: 30px; }
+
+#logo { margin-left: 50px; margin-top: -98px; }
+#mainStage { position: absolute; left: 0px; top: 130px; z-index: 1; }
+#copyright { margin-left: 550px; margin-top: 20px; }
+#introImg { margin-top: -10px; margin-bottom: -12px; }
+#introduce { padding-top: 45px; margin: auto; }
+#movieTheater { display: block; margin: auto; }
+#picture li { float: left; margin: 30px 60px 10px 20px; line-height: 45px; }
+#upper li { float: left; }
+#lower li { margin-top: 10px; line-height: 50px; }
+#movie_dsc { margin-right: 320px; }
+#schedule { margin-left: 170px; margin-top: 50px; line-height: 50px; margin-bottom: 50px; }
+#reserveBtn { margin-left: 583px; }
+#buy_ticket { margin-left: 475px; }
+#logPage { margin-right: 100px; }
+#signPage { padding: 10px 50px 10px 50px; }
+#logPage ul li { float: left; margin-left: 37px; margin-top: 50px; }
+#loginLogo { margin-top: -60px; }
+
+#logPage .head { margin-left: 100px; line-height: 23px; }
+
+#rsTable { text-align: center; margin-bottom: 50px; }
+#seatTable { text-align: center; position:relative; top:-239px; left: 55px; }
+#rowTable { text-align: center; margin-top:50px; }
+#dsc { float: left; margin-top: 220px; margin-right: 90px; line-height: 30px; }
+#poster { margin-right: 140px; margin-top: 200px; width: 170px; }
+#leftside { margin-left: 120px;}
+#payBtn { margin-left: -15px; margin-right: 25px; line-height: 100px; }
+#checkTable { text-align: center; margin: auto; margin-top: 100px; }
+#mv_detail { float:left; margin-top: 20px; margin-left: 50px; }
+#detail_poster { float: left; margin-top: 20px; margin-left: 300px;}
+#done { text-align: center; margin-top:150px; margin-bottom: 30px; }
+.colortext { height: 30px; line-height: 40px; }
+#text2 { padding-top: 8px; }

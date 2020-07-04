@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>예매 상세</title>
+    <link rel="stylesheet" type="text/css" href="style-size.css"/>
+	<link rel="stylesheet" type="text/css" href="style-layout.css"/>
+	<link rel="stylesheet" type="text/css" href="style-presentation.css"/>
+</head>
+<body>
+    <div id="done">예매가 완료되었습니다.</div>
+    <img id="detail_poster"/>
+    <ul id="mv_detail">
+        <li>영화 : <span id="detail_title"> </span></li>
+        <li>상영관 및 상영시간 : <span id="detail_time"> </span></li>
+        <li>상영일 : <span id="detail_date"> </span></li>
+        <li>예매 인원 : <span id="detail_aud"> </span>명</li>
+        <li>좌석 : <span id="detail_seat"> </span></li>
+        <li>결제 금액 : <span id="detail_pay"> </span>원</li>
+    </ul>
+    
+</body>
+<script type="text/javascript">
+    var movieIndex = window.localStorage.getItem("movieIndex");
+
+    window.onload = function (){
+        var imgURL;
+        var movieDetail = window.localStorage.getItem(movieIndex);
+        movieDetail = JSON.parse(movieDetail);
+        
+        document.getElementById("detail_title").innerHTML = movieDetail["title"];
+        document.getElementById("detail_time").innerHTML = movieDetail["time"];
+        document.getElementById("detail_date").innerHTML = movieDetail["date"];
+        document.getElementById("detail_aud").innerHTML = movieDetail["aud"];
+        document.getElementById("detail_seat").innerHTML = movieDetail["seat"];
+        document.getElementById("detail_pay").innerHTML = movieDetail["pay"];
+
+        switch(movieDetail["title"]){
+            case "영화 A":
+                imgURL = "images/onScreen1.jpg"
+                break;
+            case "영화 B":
+                imgURL = "images/onScreen2.jpg"
+                break;
+            case "영화 C":
+                imgURL = "images/onScreen3.gif"
+                break;
+            case "영화 D":
+                imgURL = "images/onScreen4.gif"
+                break;     
+        }
+        document.getElementById("detail_poster").src = imgURL;
+        window.localStorage.removeItem("movieIndex");
+
+    }
+</script>
+</html>

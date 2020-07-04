@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>좌석 선택 및 결제</title>
+    <link rel="stylesheet" type="text/css" href="style-size.css"/>
+	<link rel="stylesheet" type="text/css" href="style-layout.css"/>
+	<link rel="stylesheet" type="text/css" href="style-presentation.css"/>
+</head>
+<body>
+    <h3 id="pick">관람 인원 및 좌석 선택</h3>
+    <div class="left" id="leftside">관람 인원 
+        <select id="aud" name="aud" size="1" onChange="setAud(this);">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select><br><br><br>
+        <div id="colorbox1"></div><div class="colortext">예매완료</div><div id="colorbox2"></div><div class="colortext" id="text2">선택</div><br>
+        <span id="screen"> Screen </span><br>
+        <table id="rowTable">
+            <tr><td>A</td></tr>
+            <tr><td>B</td></tr>
+            <tr><td>C</td></tr>
+            <tr><td>D</td></tr>
+            <tr><td>E</td></tr>
+            <tr><td>F</td></tr>
+        </table>
+        <table id="seatTable">
+            <tr><td id="A1" onclick="changeStack(id);">1</td><td id="A2" onclick="changeStack(id);">2</td><td id="A3" onclick="changeStack(id);">3</td><td id="A4" onclick="changeStack(id);">4</td><td id="A5" onclick="changeStack(id);">5</td><td id="A6" onclick="changeStack(id);">6</td><td id="A7" onclick="changeStack(id);">7</td><td id="A8" onclick="changeStack(id);">8</td><td id="A9" onclick="changeStack(id);">9</td><td id="A10" onclick="changeStack(id);">10</td></tr>
+            <tr><td id="B1" onclick="changeStack(id);">1</td><td id="B2" onclick="changeStack(id);">2</td><td id="B3" onclick="changeStack(id);">3</td><td id="B4" onclick="changeStack(id);">4</td><td id="B5" onclick="changeStack(id);">5</td><td id="B6" onclick="changeStack(id);">6</td><td id="B7" onclick="changeStack(id);">7</td><td id="B8" onclick="changeStack(id);">8</td><td id="B9" onclick="changeStack(id);">9</td><td id="B10" onclick="changeStack(id);">10</td></tr>
+            <tr><td id="C1" onclick="changeStack(id);">1</td><td id="C2" onclick="changeStack(id);">2</td><td id="C3" onclick="changeStack(id);">3</td><td id="C4" onclick="changeStack(id);">4</td><td id="C5" onclick="changeStack(id);">5</td><td id="C6" onclick="changeStack(id);">6</td><td id="C7" onclick="changeStack(id);">7</td><td id="C8" onclick="changeStack(id);">8</td><td id="C9" onclick="changeStack(id);">9</td><td id="C10" onclick="changeStack(id);">10</td></tr>
+            <tr><td id="D1" onclick="changeStack(id);">1</td><td id="D2" onclick="changeStack(id);">2</td><td id="D3" onclick="changeStack(id);">3</td><td id="D4" onclick="changeStack(id);">4</td><td id="D5" onclick="changeStack(id);">5</td><td id="D6" onclick="changeStack(id);">6</td><td id="D7" onclick="changeStack(id);">7</td><td id="D8" onclick="changeStack(id);">8</td><td id="D9" onclick="changeStack(id);">9</td><td id="D10" onclick="changeStack(id);">10</td></tr>
+            <tr><td id="E1" onclick="changeStack(id);">1</td><td id="E2" onclick="changeStack(id);">2</td><td id="E3" onclick="changeStack(id);">3</td><td id="E4" onclick="changeStack(id);">4</td><td id="E5" onclick="changeStack(id);">5</td><td id="E6" onclick="changeStack(id);">6</td><td id="E7" onclick="changeStack(id);">7</td><td id="E8" onclick="changeStack(id);">8</td><td id="E9" onclick="changeStack(id);">9</td><td id="E10" onclick="changeStack(id);">10</td></tr>
+            <tr><td id="F1" onclick="changeStack(id);">1</td><td id="F2" onclick="changeStack(id);">2</td><td id="F3" onclick="changeStack(id);">3</td><td id="F4" onclick="changeStack(id);">4</td><td id="F5" onclick="changeStack(id);">5</td><td id="F6" onclick="changeStack(id);">6</td><td id="F7" onclick="changeStack(id);">7</td><td id="F8" onclick="changeStack(id);">8</td><td id="F9" onclick="changeStack(id);">9</td><td id="F10" onclick="changeStack(id);">10</td></tr>
+        </table>
+    </div>
+    <div class="right">
+        <img id="poster"/>
+        <div id="dsc">
+            <div id="mv_title"> </div>
+            상영일: <span id="play_date"> </span><br>
+            <div id="mv_time"> </div><br>
+            좌석 번호: <span id="seat_number"> </span><br>
+            결제 금액: <span id="pay_amount"> </span>원
+        </div><br><br>
+        <span id="payBtn" onclick="saveData();"> 예매완료 </span>
+        <span id="payBtn" onclick="resetData();"> 초기화 </span>
+        
+
+
+    </div>
+    <script type="text/javascript">
+        var movie_title = window.localStorage["title"];
+        var movie_time = window.localStorage["time"];
+        var movie_date = window.localStorage["date"];
+        var posterURL;
+        var clickedSeat = [];
+        var e = document.getElementById("aud");
+        var selectedValue = e.options[e.selectedIndex].value;
+        var reserveStack = [];
+        var reservedSeat = [];
+        
+
+        function Movie(title_value, date_value, time_value, pay_value, aud_value, seat_value){
+				this.title = title_value;
+				this.date = date_value;
+				this.time = time_value;
+                this.pay = pay_value;
+                this.aud = aud_value;
+                this.seat = seat_value;
+        }
+        
+        var reservedMovie = new Movie(movie_title, movie_date, movie_time)
+        //localStorage.clear();
+        window.localStorage.removeItem('date');
+        window.localStorage.removeItem('title');
+        window.localStorage.removeItem('time');
+
+        switch(reservedMovie.title){
+            case "영화 A":
+                posterURL = 'images/onScreen1.jpg';
+                break;
+            case "영화 B":
+                posterURL = 'images/onScreen2.jpg';
+                break;
+            case "영화 C":
+                posterURL = 'images/onScreen3.gif';
+                break;
+            case "영화 D":
+                posterURL = 'images/onScreen4.gif';
+                break;
+
+        }
+
+        window.onload = function(){
+            document.getElementById("play_date").innerHTML = reservedMovie.date;
+            document.getElementById("mv_title").innerHTML = reservedMovie.title;
+            document.getElementById("mv_time").innerHTML = reservedMovie.time;
+            document.getElementById("poster").src = posterURL;
+            if('reserveStack' in localStorage){
+                var str = localStorage.getItem('reserveStack');
+                reserveStack = str.split(',');
+            }
+            checkReserved();
+        }
+
+        function checkReserved(){
+            for(var idx = 0; idx < reserveStack.length; idx++){
+                var mvData = window.localStorage.getItem(reserveStack[idx]);
+                mvData = JSON.parse(mvData);
+                // 1. 영화 제목이 같은지 확인
+                if( mvData["title"] == reservedMovie.title ){
+                    console.log("1");
+                    // 2. 날짜가 같은지 확인
+                    if ( mvData["date"] == reservedMovie.date ){
+                        // 3. 시간이 같은지 확인
+                        console.log("2");
+                        if( mvData["time"] == reservedMovie.time){
+                                var seatArr = mvData["seat"];
+                                console.log(typeof(seatArr));
+                                for ( var i = 0; i < seatArr.length ; i++){
+                                    document.getElementById(seatArr[i]).style.backgroundColor = "#d37122"; 
+                                    reservedSeat.push(seatArr[i]);
+                                }
+                        }
+                    }
+                }
+            }
+            
+        }
+
+        function setAud(sel){
+
+            var tmp = sel.options[sel.selectedIndex].value;
+            if ( tmp < clickedSeat.length ){
+                alert("선택한 관람 인원이 이미 선택한 좌석보다 적습니다.")
+                sel.selectedIndex = clickedSeat.length - 1;
+                return;
+            }
+            else{
+                selectedValue = tmp;
+            }
+        }
+
+        function changeStack(id){
+
+            // 이미 stack에 존재하는 경우 -> 삭제 & 색칠 해제
+            if(clickedSeat.includes(id)){
+                document.getElementById(id).style.backgroundColor = "black";
+                var idx = clickedSeat.indexOf(id); 
+                if (idx > -1) { clickedSeat.splice(idx, 1); }
+            }
+
+            // 예매된 좌석인 경우
+            else if(reservedSeat.includes(id)){
+                alert("이미 예매된 좌석입니다. 다른 좌석을 골라주세요.");
+            }
+
+            // 존재하지 않는 경우 -> 추가 & 색칠
+            else {
+
+                if(clickedSeat.length >= selectedValue){
+                    alert("선택한 좌석이 관람 인원 보다 많습니다.");
+                    return;
+                }
+                // 선택해야할 좌석이 2개 이상인 경우
+                if(selectedValue - clickedSeat.length >= 2){
+                    var row = id[0];
+                    var num = Number(id[1]) + 1;
+                    console.log(num);
+                    // 선택한 좌석이 10번(끝좌석)인 경우
+                    if ( num > 10 ){
+                        num = 9;
+                    }
+                    var nextSeat = row +  num;
+                    console.log(nextSeat);
+
+                    // 옆좌석이 이미 예매된 좌석인 경우
+                    if( reservedSeat.includes(nextSeat) ){
+                        alert("이미 예매된 좌석입니다. 다른 좌석을 골라주세요.");
+                        return;
+                    }
+
+                    // 선택된 좌석 색칠 & 스택에 넣기
+                    document.getElementById(id).style.backgroundColor = "#a10000";
+                    clickedSeat.push(id);
+                    // 옆좌석도 색칠 & 스택에 넣기
+                    document.getElementById(nextSeat).style.backgroundColor = "#a10000";
+                    clickedSeat.push(nextSeat);
+                }
+                // 선택해야할 좌석이 1개인 경우
+                else{
+                    document.getElementById(id).style.backgroundColor = "#a10000";
+                    clickedSeat.push(id);
+                }
+            }
+            printSeatnMoney();
+        }       
+
+        function printSeatnMoney(){
+            var payAmount = clickedSeat.length * 12000;
+
+            document.getElementById("seat_number").innerHTML = clickedSeat.sort();
+
+            document.getElementById("pay_amount").innerHTML = payAmount;
+        }
+
+        function resetData(){
+
+            for ( var idx = 0; idx < clickedSeat.length; idx ++){
+                document.getElementById(clickedSeat[idx]).style.backgroundColor = "black";
+            }
+            clickedSeat = [];
+            e.selectedIndex = 0;
+            printSeatnMoney();
+
+        }
+
+        function saveData(){
+
+            reservedMovie.pay = document.getElementById("pay_amount").innerHTML;
+            reservedMovie.aud = clickedSeat.length;
+            reservedMovie.seat = clickedSeat;
+
+
+            if(clickedSeat.length < selectedValue)
+            {
+                alert("선택한 좌석 수가 부족합니다.");
+            }
+            
+            else{
+                //console.log(reserveStack.length);
+                if(reserveStack.length >= 10){
+                    alert("최대 예매 가능 영화 수를 넘었습니다.");
+                }
+                else{
+                    localStorage.setItem(reservedMovie.title+" "+reservedMovie.seat[0], JSON.stringify(reservedMovie))
+                    reserveStack.push(reservedMovie.title+" "+reservedMovie.seat[0]);
+                    localStorage.setItem('reserveStack', reserveStack.toString());
+                    window.location.href = "checkrsv.html";
+                }
+            }
+
+		}
+
+    </script>
+</body>
+</html>

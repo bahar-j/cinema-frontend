@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>빠른 예매</title>
+	<link rel="stylesheet" type="text/css" href="style-size.css"/>
+	<link rel="stylesheet" type="text/css" href="style-layout.css"/>
+	<link rel="stylesheet" type="text/css" href="style-presentation.css"/>
+</head>
+	
+<body>
+	<form>
+		<table id="rsTable">
+			<caption>빠른 예매</caption>
+			<th>영화</th><th>날짜</th><th>시간</th>
+			<tr><td class="mvName" id="mvA" onclick="changeStack(id);">영화 A</td><td class="day" id="date1" onclick ="daySwitch(id);">금 6/19</td><td class="time" ><a id="0" onclick="saveData(id);" href="buyticket.html" target="display_area"> </a></td></tr>
+			<tr><td class="mvName" id="mvB" onclick="changeStack(id);">영화 B</td><td class="day" id="date2" onclick ="daySwitch(id);">토 6/20</td><td class="time"><a id="1" onclick="saveData(id);" href="buyticket.html" target="display_area"> </a></td></tr>
+			<tr><td class="mvName" id="mvC" onclick="changeStack(id);">영화 C</td><td class="day"></td><td class="time"><a id="2" onclick="saveData(id);" href="buyticket.html" target="display_area"> </a></td></tr>
+			<tr><td class="mvName" id="mvD" onclick="changeStack(id);">영화 D</td><td class="day"></td><td class="time"><a id="3" onclick="saveData(id);" href="buyticket.html" target="display_area"> </a></td></tr>
+			<tr><td class="mvName"> </td><td class="day"></td><td class="time"><a id="4" onclick="saveData(id);" href="buyticket.html" target="display_area"> </a></td></tr>
+		</table>
+		
+
+		<script type="text/javascript">
+
+			var clickedTime = []
+			var isDate1Clicked = false;
+			var isDate2Clicked = false;
+
+			function Movie(title_value, time_value, time_value2){
+				this.title = title_value;
+				this.time = time_value;
+				this.time2 = time_value2;
+			}
+
+			var movieA = new Movie("영화 A", "1관 9:30 ~ 11:40")
+			var movieB = new Movie("영화 B", "2관 12:00 ~ 13:47", "3관 19:30 ~ 21:17")
+			var movieC = new Movie("영화 C", "2관 14:00 ~ 16:28")
+			var movieD = new Movie("영화 D", "3관 17:00 ~ 18:47")
+
+			function changeStack(id){
+				//이미 stack 안에 있는 것을 다시 click한 경우 -> stack에서 삭제 & 색칠 해제
+				switch(id){
+					case "mvA":
+						if(clickedTime.includes("영화 A / " + movieA.time)){
+							document.getElementById(id).style.backgroundColor = "black";
+							var idx = clickedTime.indexOf("영화 A / " + movieA.time); 
+							if (idx > -1) { clickedTime.splice(idx, 1); }
+							printTime();
+							return;
+						}
+						break;
+					case "mvB":
+						if(clickedTime.includes("영화 B / " + movieB.time)){
+							document.getElementById(id).style.backgroundColor = "black";
+							var idx = clickedTime.indexOf("영화 B / " + movieB.time);
+							if (idx > -1) {
+								clickedTime.splice(idx, 1);
+								clickedTime.splice(idx, 1);
+							}
+							printTime();
+							return;
+						}
+						break;
+					case "mvC":
+						if(clickedTime.includes("영화 C / " + movieC.time)){
+							document.getElementById(id).style.backgroundColor = "black";
+							var idx = clickedTime.indexOf("영화 C / " + movieC.time); 
+							if (idx > -1) { clickedTime.splice(idx, 1); }
+							printTime();
+							return;
+						}
+						break;
+					case "mvD":
+						if(clickedTime.includes("영화 D / " + movieD.time)){
+							document.getElementById(id).style.backgroundColor = "black";
+							var idx = clickedTime.indexOf("영화 D / " + movieD.time);
+							if (idx > -1) { clickedTime.splice(idx, 1); }
+							printTime();
+							return;
+						}
+						break;
+				}
+
+				//아닌 경우 -> stack에 추가 & 색칠
+				
+				document.getElementById(id).style.backgroundColor = "#a10000";
+
+				switch(id){
+					case "mvA":
+						clickedTime.push("영화 A / " + movieA.time);
+						break;
+					case "mvB":
+						clickedTime.push("영화 B / " + movieB.time);
+						clickedTime.push("영화 B / " + movieB.time2);
+						break;
+					case "mvC":
+						clickedTime.push("영화 C / " + movieC.time);
+						break;
+					case "mvD":
+						clickedTime.push("영화 D / " + movieD.time);
+						break;
+				}
+
+				printTime();
+			}
+
+			function daySwitch(id){
+				if((id == "date1") && (isDate1Clicked == false)){
+					document.getElementById(id).style.backgroundColor = "#a10000";
+					document.getElementById("date2").style.backgroundColor = "black";
+					isDate1Clicked = true;
+					isDate2Clicked = false;
+				}
+				else if((id == "date1") && (isDate1Clicked == true)){
+					document.getElementById(id).style.backgroundColor = "black";
+					isDate1Clicked = false;
+				}
+				else if((id == "date2") && (isDate2Clicked == false)){
+					document.getElementById(id).style.backgroundColor = "#a10000";
+					document.getElementById("date1").style.backgroundColor = "black";
+					isDate2Clicked = true;
+					isDate1Clicked = false;
+				}
+				else if((id == "date2") && (isDate2Clicked == true)){
+					document.getElementById(id).style.backgroundColor = "black";
+					isDate2Clicked = false;
+				}
+				printTime();
+			}
+
+			function printTime(){
+				document.getElementById("0").innerHTML = ""
+				document.getElementById("1").innerHTML = ""
+				document.getElementById("2").innerHTML = ""
+				document.getElementById("3").innerHTML = ""
+				document.getElementById("4").innerHTML = ""
+				// 날짜 지정이 안된 경우
+				if((isDate1Clicked == false) && (isDate2Clicked == false)){
+					return;
+				}
+				// 영화 지정이 안된 경우
+				if(clickedTime.length == 0){
+					return;
+				}
+
+				for (var i = 0; i < clickedTime.length; i++){
+					document.getElementById(i).innerHTML = clickedTime[i];
+				}
+
+			}
+
+			function saveData(id){
+				var str = clickedTime[id];
+				var result = str.slice(0, 4);
+				if(isDate1Clicked){
+					window.localStorage["date"] = "2020.06.19(금)"
+				}
+				else if(isDate2Clicked){
+					window.localStorage["date"] = "2020.06.20(토)"
+				}
+				console.log(window.localStorage["date"]);
+
+				switch(result){
+					case "영화 A":
+						window.localStorage["title"] = movieA.title;
+						window.localStorage["time"] = movieA.time;
+						break;
+					case "영화 B":
+						var time = str.slice(7);
+						window.localStorage["title"] = movieB.title;
+						window.localStorage["time"] = time;
+						break;
+					case "영화 C":
+						window.localStorage["title"] = movieC.title;
+						window.localStorage["time"] = movieC.time;
+						break;
+					case "영화 D":
+						window.localStorage["title"] = movieD.title;
+						window.localStorage["time"] = movieD.time;
+						break;
+				}
+			}
+
+		</script>
+	</form>
+</body>
+</html>

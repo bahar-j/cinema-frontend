@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>회원가입</title>
+	<link rel="stylesheet" type="text/css" href="style-size.css"/>
+	<link rel="stylesheet" type="text/css" href="style-layout.css"/>
+	<link rel="stylesheet" type="text/css" href="style-presentation.css"/>
+</head>
+	
+<body class="movie">
+	
+	<aside class="left">
+		<div class="head">멤버</div><br>
+		<hr/>
+		<ul>
+			<li><a href="login.html" target="display_area">로그인 &nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+			<li><a href="signup.html" target="display_area">회원가입 &nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+		</ul>
+	</aside>
+	
+	<article class="right">
+		<div class="head">회원가입</div><br>
+		<hr/><br>
+		<form>
+			<fieldset id="signPage">
+				<span class="highlight">기본정보</span><br>
+				<div class="signDsc">*필수 입력사항입니다.</div>
+				<hr/>
+				<label for="name">이름 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label> <input id="name" type="text"><br>
+					
+				<label for="username">아이디 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
+				<input type="text" name="u_name" size="20" id="username"/>
+				<input id="dup_check" type="button" value="중복체크" disabled/><br>
+					
+				<label for="pass1">비밀번호 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label> <input id="pass1" type="password"><br>
+				<label for="pass2">비밀번호 확인: </label><input id="pass2" type="password"><br>
+					
+				<label for="birth">생년월일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label> <input id="birth" type="date"/><br>
+				
+				성별 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:<input type="radio" name="sex" value="man" id="man">
+				<label for="man">남</label>
+				<input type="radio" name="sex" value="woman" id="woman">
+				<label for="woman">여</label><br>
+					
+				<label for="num">핸드폰번호 &nbsp;&nbsp;&nbsp;&nbsp;:</label> <input id="num" type="tel" placeholder="000-000*-0000" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}"/><br>
+				
+				<label for="mail">이메일 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label> <input id="mail" type="email"><br><br>
+				
+				<span class="highlight">추가정보</span><br>
+				<div class="signDsc">*필수 사항은 아니지만 입력하시면, 회원님을 위한 맞춤 서비스를 위해 사용됩니다.</div>
+				<hr/>
+				
+				직업 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+				<select name="job" size="1">
+					<option value="choose" selected>선택하십시오</option>
+					<option value="student">학생</option>
+					<option value="company">회사원</option>
+					<option value="teacher">교사</option>
+					<option value="sales">자영업</option>
+					<option value="others">기타</option>
+				</select><br>
+				
+				선호장르 :
+				<select name="genre" size="1">
+					<option value="horror" selected>추리</option>
+					<option value="romance">스릴러</option>
+					<option value="drama">드라마</option>
+					<option value="action">미스터리</option>
+					<option value="comedy">액션</option>
+					<option value="others">기타</option>
+				</select><br>
+				
+				메일수신여부 : <input type="radio" name="m_recieve" value="yes" id="yes">
+				<label for="yes">수신</label>
+				<input type="radio" name="m_recieve" value="no" id="no">
+				<label for="no">수신하지 않음</label><br>
+				
+				SMS수신여부 : <input type="radio" name="sms_recieve" value="yes2" id="yes2">
+				<label for="yes2">수신</label>
+				<input type="radio" name="sms_recieve" value="no2" id="no2">
+				<label for="no2">수신하지 않음</label><br><br>
+				
+				
+				<input id="signup_button" type="submit" value="가입" disabled/>&nbsp;&nbsp;
+				<input id="reset2" type="button" value="취소" disabled/>
+			</fieldset>
+		</form>
+	</article>
+		
+</body>
+</html>

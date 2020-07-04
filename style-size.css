@@ -1,0 +1,19 @@
+
+header { width: 1263px; height: 40px; }
+nav { width: 1263px; height: 90px; }
+footer { width: 1263px; height:90px; }
+
+.day { width: 200px; }
+.mvName { width: 350px; height: 80px; }
+
+#introduce { width: 1100px; }
+#colored { width: 1250px; }
+#clue { height: 270px; }
+#schedule { width: 900px; }
+#selectMovie { width: 600px; }
+#rsTable { width: 80%; margin: auto; }
+#seatTable { width: 400px; height: 240px; }
+#rowTable { width: 40px; height: 240px; }
+#poster { width: 150px; }
+#checkTable {width: 80%; height: 800px;}
+
